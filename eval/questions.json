@@ -1,0 +1,107 @@
+[
+  {
+    "id": "q01",
+    "question": "What is the base URL for the TaskFlow API?",
+    "type": "answerable",
+    "expected_contains": ["https://api.taskflow.io/v1"],
+    "must_refuse": false
+  },
+  {
+    "id": "q02",
+    "question": "How do I authenticate requests to TaskFlow?",
+    "type": "answerable",
+    "expected_contains": ["Authorization", "Bearer"],
+    "must_refuse": false
+  },
+  {
+    "id": "q03",
+    "question": "What prefix do sandbox API keys use?",
+    "type": "answerable",
+    "expected_contains": ["tf_test"],
+    "must_refuse": false
+  },
+  {
+    "id": "q04",
+    "question": "What HTTP method and path do I use to list all tasks?",
+    "type": "answerable",
+    "expected_contains": ["GET", "/v1/tasks"],
+    "must_refuse": false
+  },
+  {
+    "id": "q05",
+    "question": "What fields are required when creating a new task?",
+    "type": "answerable",
+    "expected_contains": ["title", "project_id"],
+    "must_refuse": false
+  },
+  {
+    "id": "q06",
+    "question": "What are the valid task status values?",
+    "type": "answerable",
+    "expected_contains": ["open", "in_progress", "done", "cancelled"],
+    "must_refuse": false
+  },
+  {
+    "id": "q07",
+    "question": "What happens when you DELETE a project?",
+    "type": "answerable",
+    "expected_contains": ["archived"],
+    "must_refuse": false
+  },
+  {
+    "id": "q08",
+    "question": "What error code is returned when rate limits are exceeded?",
+    "type": "answerable",
+    "expected_contains": ["rate_limit_exceeded"],
+    "must_refuse": false
+  },
+  {
+    "id": "q09",
+    "question": "What should I do when I receive a 429 response?",
+    "type": "answerable",
+    "expected_contains": ["Retry-After"],
+    "must_refuse": false
+  },
+  {
+    "id": "q10",
+    "question": "How many requests per minute does the Sandbox plan allow?",
+    "type": "answerable",
+    "expected_contains": ["60"],
+    "must_refuse": false
+  },
+  {
+    "id": "q11",
+    "question": "Can I invite a new user via POST /v1/users?",
+    "type": "answerable",
+    "expected_contains": ["not"],
+    "must_refuse": false
+  },
+  {
+    "id": "q12",
+    "question": "What endpoint is deprecated and what should I use instead?",
+    "type": "answerable",
+    "expected_contains": ["/v1/project-list", "/v1/projects"],
+    "must_refuse": false
+  },
+  {
+    "id": "q13",
+    "question": "What webhook event fires when a task is permanently deleted?",
+    "type": "answerable",
+    "expected_contains": ["task.deleted"],
+    "must_refuse": false
+  },
+  {
+    "id": "q14",
+    "question": "How do I export billing invoices through the API?",
+    "type": "unanswerable",
+    "expected_contains": [],
+    "must_refuse": true
+  },
+  {
+    "id": "q15",
+    "question": "What is the endpoint to transfer a task to another workspace?",
+    "type": "unanswerable",
+    "expected_contains": [],
+    "must_refuse": true
+  }
+]

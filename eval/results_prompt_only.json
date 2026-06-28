@@ -1,0 +1,159 @@
+{
+  "mode": "prompt_only",
+  "overall": "14/15",
+  "overall_pct": 93.3,
+  "answerable": "12/13",
+  "unanswerable": "2/2",
+  "results": [
+    {
+      "id": "q01",
+      "question": "What is the base URL for the TaskFlow API?",
+      "type": "answerable",
+      "passed": true,
+      "answer": "The base URL for the TaskFlow API is:\n\n```\nhttps://api.taskflow.io/v1\n```",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "How do I authenticate requests to TaskFlow?",
+      "type": "answerable",
+      "passed": true,
+      "answer": "To authenticate requests to TaskFlow, you must send your secret API key in the `Authorization` header using the Bearer scheme. The format is as follows:\n\n```\nAuthorization: Bearer tf_live_sk_xxxxxxxxxxxxxxxx\n```\n\nWhere `tf_live_sk_` indicates a production key and `x` represents a unique identifier.\n\nAdditionally, when creating an API key in the TaskFlow dashboard, you can restrict scopes to control what actions can be performed on tasks, projects, and users. The available scopes are:\n\n| Scope | Allows |\n|-------|--------|\n| `tasks:read` | List and get tasks |\n| `tasks:write` | Create, update, delete tasks |\n| `projects:read` | List and get projects |\n| `projects:write` | Create, update, archive projects |\n| `users:read` | List and get users in your workspace |\n\nIf a request is missing the required scope, it returns **403 Forbidden** with error code `insufficient_scope`.",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "What prefix do sandbox API keys use?",
+      "type": "answerable",
+      "passed": true,
+      "answer": "The prefix for sandbox API keys is `tf_test_sk_`.",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "What HTTP method and path do I use to list all tasks?",
+      "type": "answerable",
+      "passed": true,
+      "answer": "To list all tasks, you would use the `GET` HTTP method and the following path:\n\n```\nGET /v1/tasks\n```",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "What fields are required when creating a new task?",
+      "type": "answerable",
+      "passed": true,
+      "answer": "According to the `endpoints-tasks.md` documentation, the following fields are required when creating a new task:\n\n1. `title`\n2. `project_id`\n\nThese two fields must be present in the request body for the task creation request to be successful.",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "What are the valid task status values?",
+      "type": "answerable",
+      "passed": true,
+      "answer": "According to the TaskFlow API documentation, the valid task status values are:\n\n* `open`\n* `in_progress`\n* `done`\n* `cancelled`\n\nThese values can be used when updating a task using the `PATCH /v1/tasks/{task_id}` endpoint.",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q07",
+      "question": "What happens when you DELETE a project?",
+      "type": "answerable",
+      "passed": true,
+      "answer": "When you delete a project using the TaskFlow API, it is considered a **soft delete**. The project's `status` becomes `archived`; however, tasks remain but cannot be assigned to new work without unarchiving the project. This action is a permanent deletion of the project's state in the system, but the actual data (tasks) are not deleted and can still be accessed through other means.",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q08",
+      "question": "What error code is returned when rate limits are exceeded?",
+      "type": "answerable",
+      "passed": true,
+      "answer": "The error code returned when rate limits are exceeded is `rate_limit_exceeded`.",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "What should I do when I receive a 429 response?",
+      "type": "answerable",
+      "passed": true,
+      "answer": "When you receive a 429 response with error code `rate_limit_exceeded`, honor the `Retry-After` response header (seconds). Do not retry immediately in a tight loop. Instead, wait at least that many seconds before retrying.\n\nAdditionally, consider implementing exponential backoff for retries to avoid overwhelming the API during periods of high usage.",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "How many requests per minute does the Sandbox plan allow?",
+      "type": "answerable",
+      "passed": true,
+      "answer": "The Sandbox plan allows 60 requests per minute.",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q11",
+      "question": "Can I invite a new user via POST /v1/users?",
+      "type": "answerable",
+      "passed": false,
+      "answer": "I don't have that information in the TaskFlow API documentation.",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q12",
+      "question": "What endpoint is deprecated and what should I use instead?",
+      "type": "answerable",
+      "passed": true,
+      "answer": "The `GET /v1/project-list` endpoint is deprecated as of 2026-03-01. You should use `GET /v1/projects` instead.",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q13",
+      "question": "What webhook event fires when a task is permanently deleted?",
+      "type": "answerable",
+      "passed": true,
+      "answer": "The `task.deleted` webhook event fires when a task is permanently deleted.",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q14",
+      "question": "How do I export billing invoices through the API?",
+      "type": "unanswerable",
+      "passed": true,
+      "answer": "I don't have that information in the TaskFlow API documentation.",
+      "sources": [
+        "all_docs"
+      ]
+    },
+    {
+      "id": "q15",
+      "question": "What is the endpoint to transfer a task to another workspace?",
+      "type": "unanswerable",
+      "passed": true,
+      "answer": "I don't have that information in the TaskFlow API documentation.",
+      "sources": [
+        "all_docs"
+      ]
+    }
+  ]
+}
